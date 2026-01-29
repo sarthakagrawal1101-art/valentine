@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweet Love</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+body{
+  height:100vh;
+  background: radial-gradient(circle at top, #ffd6e8, #f6a5c0);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+/* Main content */
+.container{
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+
+.container img{
+  width:260px;
+  max-width:80vw;
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-12px); }
+}
+
+/* Button */
+.btn{
+  margin-top:22px;
+  padding:14px 30px;
+  border:none;
+  border-radius:30px;
+  background:#ff7aa8;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 12px 30px rgba(255,122,168,0.4);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 36px rgba(255,122,168,0.5);
+}
+
+/* Petals */
+.petals{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+}
+
+.petal{
+  position:absolute;
+  top:-20px;
+  font-size:18px;
+  opacity:0.8;
+  animation: fall linear infinite, sway ease-in-out infinite;
+}
+
+@keyframes fall{
+  to{ transform:translateY(110vh); }
+}
+
+@keyframes sway{
+  0%,100%{ margin-left:0; }
+  50%{ margin-left:40px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <img src="sweet-love.png" alt="Sweet Love in Bloom">
+
+  <br>
+  <button class="btn" onclick="goNext()">Open gently, Its' my 💗</button>
+</div>
+
+<div class="petals" id="petals"></div>
+
+<script>
+const petalsContainer = document.getElementById("petals");
+const petalCount = 28;
+const petals = ["🌸","🌷","💮","🌺"];
+
+for(let i=0;i<petalCount;i++){
+  const p = document.createElement("div");
+  p.className = "petal";
+  p.innerHTML = petals[Math.floor(Math.random()*petals.length)];
+  p.style.left = Math.random()*100 + "vw";
+  p.style.animationDuration = (10 + Math.random()*8) + "s";
+  p.style.animationDelay = Math.random()*5 + "s";
+  p.style.fontSize = (14 + Math.random()*12) + "px";
+  petalsContainer.appendChild(p);
+}
+
+function goNext(){
+  window.location.href = "page2.html";
+}
+</script>
+
+</body>
+</html>
