@@ -113,52 +113,27 @@
   </style>
 </head>
 <body>
+  <div class="valentine">
+    <h1 class="main-text">Happy Valentine’s Day</h1>
+    <p class="sub-text">You are mine. Always & forever 🫂</p>
 
-  <!-- Floating hearts -->
-  <div class="hearts-bg">
-    <span style="left:10%;animation-delay:0s">💖</span>
-    <span style="left:30%;animation-delay:2s">💗</span>
-    <span style="left:50%;animation-delay:4s">💞</span>
-    <span style="left:70%;animation-delay:1s">❤️</span>
-    <span style="left:90%;animation-delay:3s">💓</span>
+    <div class="photo-grid">
+      <img src="photo1.jpg" class="photo tilt-1" />
+      <img src="photo2.jpg" class="photo tilt-2" />
+      <img src="photo3.jpg" class="photo tilt-3" />
+      <img src="photo4.jpg" class="photo tilt-4" />
+    </div>
+
+    <div class="signature">— yours, forever 💕</div>
   </div>
-
-  <!-- Photos -->
-  <div class="photos">
-    <div class="photo" style="top:12%; left:8%; transform: rotate(-3deg);">
-      <img src="photo1.jpg" />
-    </div>
-    <div class="photo" style="top:10%; right:10%; transform: rotate(4deg); width:170px;">
-      <img src="photo2.jpg" />
-    </div>
-    <div class="photo" style="bottom:18%; left:12%; transform: rotate(2deg);">
-      <img src="photo3.jpg" />
-    </div>
-    <div class="photo" style="bottom:12%; right:8%; transform: rotate(-4deg); width:180px;">
-      <img src="photo4.jpg" />
-    </div>
-  </div>
-
-  <!-- Center Message -->
-  <div class="center-text">
-    <h1>Happy Valentine’s Day</h1>
-    <p>You are mine. Always & forever 🫂</p>
-  </div>
-
-  <!-- Signature -->
-  <div class="signature">— yours, forever 💕</div>
 
   <script>
-    // Heart burst on photo tap
-    document.querySelectorAll('.photo').forEach(photo => {
-      photo.addEventListener('click', e => {
-        const heart = document.createElement('div');
-        heart.className = 'burst';
-        heart.innerText = '💖';
-        heart.style.left = e.offsetX + 'px';
-        heart.style.top = e.offsetY + 'px';
-        photo.appendChild(heart);
-        setTimeout(() => heart.remove(), 800);
+    document.querySelectorAll('.photo').forEach(p => {
+      p.addEventListener('click', e => {
+        const burst = document.createElement('div');
+        burst.className = 'heart-burst';
+        p.appendChild(burst);
+        setTimeout(()=>burst.remove(),600);
       });
     });
   </script>
