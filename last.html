@@ -1,246 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Forever Mine ❤️</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Valentine’s Day</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-* { box-sizing: border-box; }
-
 body {
   margin: 0;
   height: 100vh;
-  font-family: 'Quicksand', sans-serif;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  background: linear-gradient(180deg, #ffd1dc, #ffb6c1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Playfair Display', serif;
   overflow: hidden;
-  color: ##B43687;
 }
 
-/* CENTER TEXT */
+.card {
+  width: 90%;
+  max-width: 1100px;
+  height: 600px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  border-radius: 30px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  padding: 40px;
+}
+
+/* Center Text */
 .center-text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  z-index: 10;
 }
 
 .center-text h1 {
   font-family: 'Pacifico', cursive;
-  font-size: 3rem;
-  margin: 0;
+  font-size: 56px;
+  color: #2b2b2b;
+  text-shadow: 0 0 12px rgba(255,255,255,0.8);
+  margin-bottom: 15px;
 }
 
 .center-text p {
-  font-size: 1.2rem;
-  margin-top: 10px;
+  font-size: 20px;
+  color: #3a3a3a;
 }
 
-/* RANDOM PHOTOS */
+.center-text span {
+  font-size: 18px;
+  display: block;
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+/* Photo Frames */
 .photo {
+  width: 180px;
+  height: 230px;
+  border-radius: 22px;
+  overflow: hidden;
   position: absolute;
-  width: 140px;
-  padding: 8px;
-  background: rgba(255,255,255,0.25);
-  border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  background: #fff;
 }
 
 .photo img {
   width: 100%;
-  border-radius: 16px;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.05) contrast(1.05);
 }
 
-.photo::after {
-  content: "❤️";
-  position: absolute;
-  top: -8px;
-  right: -5px;
-  font-size: 20px;
-}
-/* Photo bounce on tap */
-.photo {
-  position: absolute;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
+/* Photo Positions */
+.photo.left-top { top: 40px; left: 40px; }
+.photo.left-bottom { bottom: 40px; left: 60px; transform: rotate(-2deg); }
+.photo.right-top { top: 50px; right: 60px; }
+.photo.right-bottom { bottom: 50px; right: 40px; }
 
-.photo:active {
-  transform: scale(0.95);
-}
-
-/* Heart burst particles */
-.burst-heart {
-  position: absolute;
-  pointer-events: none;
-  font-size: 16px;
-  filter: drop-shadow(0 0 6px rgba(255,105,180,0.7));
-  animation: heartBurst 1000ms ease-out forwards;
-}
-
-/* Sparkle dots */
-.spark {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: radial-gradient(circle, #fff, transparent);
-  border-radius: 50%;
-  animation: sparkFade 800ms ease-out forwards;
-}
-
-@keyframes heartBurst {
-  0% {
-    transform: scale(0.4) translate(0,0);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.6) translate(var(--x), var(--y));
-    opacity: 0;
-  }
-}
-
-@keyframes sparkFade {
-  0% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(2); }
-}
-
-/* FLOATING HEARTS */
+/* Floating Hearts */
 .heart {
-  position: fixed;
-  font-size: 18px;
-  opacity: 0.7;
-  animation: floatUp linear infinite;
-}
-/* HEART BURST */
-.burst-heart {
   position: absolute;
-  pointer-events: none;
   font-size: 18px;
-  animation: burst 900ms ease-out forwards;
+  opacity: 0.6;
+  animation: float 6s infinite ease-in-out;
 }
 
-@keyframes burst {
-  0% {
-    transform: scale(0.5) translate(0,0);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.4) translate(var(--x), var(--y));
-    opacity: 0;
-  }
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
 }
 
-
-@keyframes floatUp {
-  from { transform: translateY(100vh); opacity: 0.7; }
-  to { transform: translateY(-10vh); opacity: 0; }
-}
-
-/* MINE TEXT */
-.mine {
-  position: fixed;
-  font-family: 'Pacifico', cursive;
-  color: rgba(255,255,255,0.25);
-  font-size: 22px;
-  transform: rotate(-20deg);
+.footer {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  font-size: 14px;
+  opacity: 0.7;
 }
 </style>
 </head>
 
 <body>
 
-<!-- CENTER MESSAGE -->
-<div class="center-text">
-  <h1>Happy Valentine’s Day ❤️</h1>
-  <p>You are mine. Always & forever 🫶</p>
+<div class="card">
+
+  <!-- Photos -->
+  <div class="photo left-top">
+    <img src="photo1.jpg" alt="Memory 1">
+  </div>
+
+  <div class="photo left-bottom">
+    <img src="photo2.jpg" alt="Memory 2">
+  </div>
+
+  <div class="photo right-top">
+    <img src="photo3.jpg" alt="Memory 3">
+  </div>
+
+  <div class="photo right-bottom">
+    <img src="photo4.jpg" alt="Memory 4">
+  </div>
+
+  <!-- Center Text -->
+  <div class="center-text">
+    <h1>Happy Valentine’s Day 💖</h1>
+    <p>Forever yours. Always mine 🫶</p>
+    <span>∞</span>
+  </div>
+
+  <!-- Floating Hearts -->
+  <div class="heart" style="top:10%; left:45%;">💗</div>
+  <div class="heart" style="top:25%; left:60%;">✨</div>
+  <div class="heart" style="top:70%; left:40%;">💞</div>
+  <div class="heart" style="top:60%; left:55%;">💖</div>
+
+  <!-- Footer -->
+  <div class="footer">14 February</div>
+
 </div>
-
-<!-- RANDOM PHOTOS -->
-<div class="photo burst" style="top:10%; left:8%;">
-  <img src="photo1.jpg">
-</div>
-
-<div class="photo burst" style="top:15%; right:10%;">
-  <img src="photo2.jpg">
-</div>
-
-<div class="photo burst" style="bottom:18%; left:12%;">
-  <img src="photo4.jpg">
-</div>
-
-<div class="photo burst" style="bottom:12%; right:14%;">
-  <img src="photo3.jpg">
-</div>
-
-<!-- HEART RAIN -->
-<script>
-for (let i = 0; i < 25; i++) {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.innerHTML = "💝💖💓";
-  h.style.left = Math.random() * 100 + "vw";
-  h.style.animationDuration = (6 + Math.random() * 6) + "s";
-  h.style.fontSize = (14 + Math.random() * 20) + "px";
-  document.body.appendChild(h);
-}
-</script>
-<script>
-for (let i = 0; i < 12; i++) {
-  const m = document.createElement("div");
-  m.className = "mine";
-  m.innerText = "mine";
-  m.style.top = Math.random() * 100 + "vh";
-  m.style.left = Math.random() * 100 + "vw";
-  document.body.appendChild(m);
-}
-</script>
-<!-- MINE EVERYWHERE -->
-<script>
-const hearts = ["❤️","💖","💗","💖","💓","💞","💕"];
-const popSound = new Audio("https://cdn.pixabay.com/audio/2022/03/15/audio_115b9a1c1b.mp3");
-
-document.querySelectorAll(".burst").forEach(photo => {
-  photo.addEventListener("click", () => {
-
-    // soft pop (mobile safe)
-    popSound.currentTime = 0;
-    popSound.volume = 0.3;
-    popSound.play().catch(()=>{});
-
-    const rect = photo.getBoundingClientRect();
-
-    // HEARTS
-    for (let i = 0; i < 12; i++) {
-      const heart = document.createElement("div");
-      heart.className = "burst-heart";
-      heart.innerHTML = hearts[Math.floor(Math.random()*hearts.length)];
-
-      heart.style.left = rect.width/2 + "px";
-      heart.style.top = rect.height/2 + "px";
-      heart.style.setProperty("--x", (Math.random()*140 - 70) + "px");
-      heart.style.setProperty("--y", (Math.random()*-140 - 40) + "px");
-
-      photo.appendChild(heart);
-      setTimeout(()=>heart.remove(),1000);
-    }
-
-    // SPARKLES
-    for (let i = 0; i < 6; i++) {
-      const spark = document.createElement("div");
-      spark.className = "spark";
-      spark.style.left = Math.random()*rect.width + "px";
-      spark.style.top = Math.random()*rect.height + "px";
-      photo.appendChild(spark);
-      setTimeout(()=>spark.remove(),800);
-    }
-  });
-});
-</script>
-
 
 </body>
 </html>
