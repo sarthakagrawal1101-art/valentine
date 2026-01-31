@@ -92,7 +92,7 @@ body{
 
   <img src="sweet-love.png" alt="Sweet Love in Bloom">
   <br>
-  <button class="btn" onclick="goNext()">Open gently 💗</button>
+  <button class="btn" onclick="goNext()">This Little world is just for you 💗</button>
 </div>
 
 <div class="petals" id="petals"></div>
@@ -100,7 +100,7 @@ body{
 <script>
 const petalsContainer = document.getElementById("petals");
 const petalCount = 28;
-const petals = ["🌸","🌷","💮","🌺"];
+const petals = ["🌻","🌸","🌷","💮","🌺","🌻"];
 
 for(let i=0;i<petalCount;i++){
   const p = document.createElement("div");
@@ -117,6 +117,40 @@ function goNext(){
   window.location.href = "moment.html";
 }
 </script>
+  <script>
+const music = document.getElementById("bgMusic");
 
+// restore state
+if (localStorage.getItem("musicPlaying") === "true") {
+  music.volume = 0;
+  music.play().then(() => fadeIn());
+}
+
+// first interaction unlock (mobile autoplay fix)
+document.addEventListener("click", startMusic, { once: true });
+
+function startMusic() {
+  music.volume = 0;
+  music.play().then(() => {
+    localStorage.setItem("musicPlaying", "true");
+    fadeIn();
+  });
+}
+
+function fadeIn() {
+  let vol = 0;
+  const fade = setInterval(() => {
+    if (vol < 0.4) {
+      vol += 0.02;
+      music.volume = vol;
+    } else {
+      clearInterval(fade);
+    }
+  }, 120);
+}
+</script>
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 </body>
 </html>
