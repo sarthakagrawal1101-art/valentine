@@ -130,7 +130,7 @@ function ultimateYes(){
   const music=document.getElementById('yesMusic');
   music.volume=.9;music.play();
   teddy.style.transform='scale(1.35)';
-
+document.getElementById('teddy').src = 'teddy-celebrate.gif';
   for(let i=0;i<30;i++){
     setTimeout(()=>{
       const h=document.createElement('div');
