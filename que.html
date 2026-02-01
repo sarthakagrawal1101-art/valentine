@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just One Question 💕</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(180deg,#ffb6c1,#ffd6e0);
+  overflow:hidden;
+}
+
+.container{
+  text-align:center;
+  padding:20px;
+  max-width:360px;
+}
+
+h1{
+  font-family:'Pacifico',cursive;
+  font-size:34px;
+  color:#b84db8;
+  margin-bottom:6px;
+}
+
+/* Roast line */
+.roast{
+  font-size:14px;
+  color:#555;
+  margin-bottom:20px;
+}
+
+/* Teddy */
+.teddy{
+  width:160px;
+  margin:10px auto 30px;
+}
+
+/* Buttons */
+.buttons{
+  position:relative;
+  height:140px;
+}
+
+button{
+  padding:14px 36px;
+  border-radius:30px;
+  font-size:18px;
+  border:none;
+  cursor:pointer;
+  position:absolute;
+  transition:0.25s ease;
+}
+
+/* YES */
+.yes{
+  left:50%;
+  transform:translateX(-60%);
+  background:#ff5fa2;
+  color:white;
+  box-shadow:0 10px 25px rgba(255,95,162,.4);
+}
+
+/* NO */
+.no{
+  left:50%;
+  transform:translateX(20%);
+  background:#eee;
+  color:#555;
+}
+
+/* Shake animation */
+@keyframes shake {
+  0%{transform:translateX(20%) rotate(0)}
+  25%{transform:translateX(18%) rotate(-3deg)}
+  50%{transform:translateX(22%) rotate(3deg)}
+  75%{transform:translateX(19%) rotate(-3deg)}
+  100%{transform:translateX(20%) rotate(0)}
+}
+
+.no.shake{
+  animation:shake .4s;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Will you be my Valentine? 💖</h1>
+  <div class="roast">Be careful… the “No” button is very dramatic 🙃</div>
+
+  <!-- Teddy GIF -->
+  <img class="teddy" src="https://media.giphy.com/media/l4FGuhL4U2WyjdkaY/giphy.gif" alt="Please Teddy">
+
+  <div class="buttons">
+    <button class="yes" onclick="goYes()">Yes 💕</button>
+    <button class="no" id="noBtn">No 🙈</button>
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+let firstTime = true;
+
+noBtn.addEventListener("mouseenter", reactNo);
+noBtn.addEventListener("click", reactNo);
+
+function reactNo(){
+  if(firstTime){
+    noBtn.classList.add("shake");
+    firstTime = false;
+    setTimeout(()=>noBtn.classList.remove("shake"),400);
+  } else {
+    moveNo();
+  }
+}
+
+function moveNo(){
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 120);
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+function goYes(){
+  window.location.href = "final.html"; // your last page
+}
+</script>
+
+</body>
+</html>
