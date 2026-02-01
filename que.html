@@ -1,194 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Will You Be My Valentine?</title>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Important Question 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  * {
-    box-sizing: border-box;
-    font-family: "Poppins", system-ui, sans-serif;
-  }
-
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background: linear-gradient(180deg, #ffd1dc, #ffb6c1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-  }
-
-  .card {
-    background: #fff5f8;
-    width: 100%;
-    max-width: 360px;
-    border-radius: 24px;
-    padding: 22px;
-    text-align: center;
-    box-shadow: 0 15px 40px rgba(255,105,135,.35);
-  }
-
-  h1 {
-    font-size: 26px;
-    color: #a2336e;
-    margin-bottom: 6px;
-  }
-
-  .subtitle {
-    font-size: 14px;
-    color: #7a2e4d;
-    margin-bottom: 12px;
-  }
-
-  .teddy {
-    width: 120px;
-    margin: 12px auto;
-    transition: transform .3s ease;
-  }
-
-  .teddy.shock { transform: scale(1.1) rotate(-6deg); }
-  .teddy.angry { transform: scale(1.15) rotate(6deg); }
-
-  .roast {
-    font-size: 13px;
-    color: #7a2e4d;
-    margin-bottom: 14px;
-    min-height: 20px;
-    transition: opacity .3s;
-  }
-
-  .choice-box {
-    position: relative;
-    width: 100%;
-    height: 150px;
-    border: 2px dashed #f4a6c1;
-    border-radius: 18px;
-    margin-top: 12px;
-    overflow: hidden;
-  }
-
-  .btn {
-    border: none;
-    border-radius: 999px;
-    padding: 12px 22px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: transform .2s ease;
-  }
-
-  .yes {
-    background: linear-gradient(135deg, #ff5f9e, #ff85b3);
-    color: white;
-    margin-top: 14px;
-  }
-
-  .no {
-    background: #e9f3ff;
-    color: #333;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .no.shake {
-    animation: shake .3s;
-  }
-
-  @keyframes shake {
-    0% { transform: translate(-50%, -50%) rotate(0); }
-    25% { transform: translate(-48%, -50%) rotate(-3deg); }
-    50% { transform: translate(-52%, -50%) rotate(3deg); }
-    100% { transform: translate(-50%, -50%) rotate(0); }
-  }
-
-  .final {
-    background: #ffd6e6 !important;
-    color: #a2336e !important;
-    pointer-events: none;
-  }
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Quicksand',sans-serif;
+  background:linear-gradient(135deg,#ffb6d5,#ffd1e8);
+  overflow:hidden;
+}
+.container{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+.question{
+  font-family:'Pacifico',cursive;
+  font-size:2.4rem;
+  color:#c2185b;
+}
+.roast{
+  margin-top:10px;
+  font-size:1rem;
+  color:#7a1b3a;
+  min-height:24px;
+}
+.teddy{
+  width:160px;
+  margin:25px 0 15px;
+  transition:transform .4s ease;
+}
+.buttons{
+  position:relative;
+  width:280px;
+  height:120px;
+}
+button{
+  position:absolute;
+  padding:14px 26px;
+  font-size:1.1rem;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+}
+#yesBtn{
+  left:0;
+  right:0;
+  margin:auto;
+  bottom:0;
+  background:#e91e63;
+  color:#fff;
+}
+#noBtn{
+  background:#fff;
+  color:#e91e63;
+  border:2px dashed #e91e63;
+  top:0;
+  left:80px;
+  transition:.2s;
+}
+/* hearts */
+.heart{
+  position:fixed;
+  font-size:22px;
+  animation:floatUp 1.8s ease-out forwards;
+}
+@keyframes floatUp{
+  from{opacity:1;transform:translateY(0) scale(.6)}
+  to{opacity:0;transform:translateY(-140px) scale(1.4)}
+}
+.fade-out{animation:fadeOut 1.3s forwards}
+@keyframes fadeOut{to{opacity:0;transform:scale(1.03)}}
 </style>
 </head>
-
 <body>
+<div class="container" id="page">
+  <div class="question">Will you be my Valentine? 💘</div>
+  <div class="roast" id="roast">Think carefully… your heart already knows 😌</div>
+  <img src="https://tenor.com/p75v6eGMM8a.gif" class="teddy" id="teddy" alt="teddy">
 
-<div class="card">
-  <h1>Will you be my Valentine? 💖</h1>
-  <div class="subtitle">Be careful… the “No” button is dramatic 😶</div>
-
-  <img src="teddy-hug.gif" alt="Teddy Hug" class="teddy" id="teddy">
-
-  <p class="roast" id="roast">
-    Teddy believes in us 🧸
-  </p>
-
-  <button class="btn yes" onclick="goNext()">YES 💘</button>
-
-  <div class="choice-box" id="box">
-    <button class="btn no" id="noBtn">NO 😭</button>
+  <div class="buttons" id="btnBox">
+    <button id="noBtn">No 🙃</button>
+    <button id="yesBtn" onclick="ultimateYes()">Yes 💖</button>
   </div>
 </div>
 
+<audio id="yesMusic">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-const noBtn = document.getElementById("noBtn");
-const box = document.getElementById("box");
-const roast = document.getElementById("roast");
-const teddy = document.getElementById("teddy");
+const noBtn=document.getElementById('noBtn');
+const roast=document.getElementById('roast');
+const teddy=document.getElementById('teddy');
+const box=document.getElementById('btnBox');
 
-let count = 0;
-
-const roasts = [
-  "Nice try 😏",
-  "That NO is running from love 🏃‍♀️💖",
-  "Even teddy is judging you 🧸",
-  "Stop bullying the NO button 😭",
-  "Fate already decided 💘",
-  "Gravity says YES 🌍",
-  "Okay this is getting suspicious 😈"
+const roasts=[
+  "Oops… missed it 😏",
+  "Nice try but destiny said no 😌",
+  "Are you sure?",
+  "Button shy ho gaya 🫣",
+  "Are you flirting with the NO button? 😒",
+  "My heart removed that option 💖"
 ];
 
-noBtn.addEventListener("mouseenter", escape);
+noBtn.addEventListener('mouseenter',moveNo);
+noBtn.addEventListener('click',moveNo);
 
-function escape() {
-  count++;
-
-  const maxX = box.clientWidth - noBtn.offsetWidth;
-  const maxY = box.clientHeight - noBtn.offsetHeight;
-
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
-
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
-
-  noBtn.classList.add("shake");
-  setTimeout(() => noBtn.classList.remove("shake"), 300);
-
-  roast.style.opacity = 0;
-  setTimeout(() => {
-    roast.textContent = roasts[Math.min(count - 1, roasts.length - 1)];
-    roast.style.opacity = 1;
-  }, 200);
-
-  teddy.classList.remove("shock", "angry");
-  if (count < 4) teddy.classList.add("shock");
-  else teddy.classList.add("angry");
-
-  // FINAL BOSS MOMENT
-  if (count >= 7) {
-    noBtn.textContent = "Okay fine 😭";
-    noBtn.classList.add("final");
-    roast.textContent = "NO has accepted its fate 💀💖";
-  }
+function moveNo(){
+  const maxX=box.clientWidth-noBtn.offsetWidth;
+  const maxY=box.clientHeight-noBtn.offsetHeight;
+  const x=Math.random()*maxX;
+  const y=Math.random()*maxY;
+  noBtn.style.left=x+'px';
+  noBtn.style.top=y+'px';
+  roast.innerText=roasts[Math.floor(Math.random()*roasts.length)];
+  teddy.style.transform='scale(1.15) rotate('+(Math.random()*10-5)+'deg)';
 }
 
-function goNext() {
-  window.location.href = "final.html"; // 🔗 last page
+function ultimateYes(){
+  const music=document.getElementById('yesMusic');
+  music.volume=.9;music.play();
+  teddy.style.transform='scale(1.35)';
+
+  for(let i=0;i<30;i++){
+    setTimeout(()=>{
+      const h=document.createElement('div');
+      h.className='heart';
+      h.innerText=['💖','💗','💕','💘'][Math.floor(Math.random()*4)];
+      h.style.left=Math.random()*100+'vw';
+      h.style.bottom='20px';
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(),1800);
+    },i*40);
+  }
+
+  document.getElementById('page').classList.add('fade-out');
+  setTimeout(()=>{window.location.href='last.html'},1500);
 }
 </script>
-
 </body>
 </html>
